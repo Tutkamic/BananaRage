@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3482fe2fe9681754b8525816685dc883
+guid: 28d252afaaaa2e548afe71466598d06f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Clown_0
+      name: Clown2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af04e1c9f4e966b47806e6cc8afd8a86
-      internalID: -909452562
+      spriteID: f088b1026f28870418763f4d84e5c004
+      internalID: -1550797256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clown_1
+      name: Clown2_1
       rect:
         serializedVersion: 2
         x: 353
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cf093ce90b660a43aeade30070f17e5
-      internalID: 832930630
+      spriteID: d9d1f8ca44f2d834e973fc1fb0f9f63c
+      internalID: -923743280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clown_2
+      name: Clown2_2
       rect:
         serializedVersion: 2
         x: 706
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da15ad9907a1ce849806c995292e38fe
-      internalID: -1648635282
+      spriteID: 4725ab17526a6c140a601ba59d354519
+      internalID: 1245329488
       vertices: []
       indices: 
       edges: []
@@ -209,9 +209,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Clown_0: -909452562
-      Clown_1: 832930630
-      Clown_2: -1648635282
+      Clown2_0: -1550797256
+      Clown2_1: -923743280
+      Clown2_2: 1245329488
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

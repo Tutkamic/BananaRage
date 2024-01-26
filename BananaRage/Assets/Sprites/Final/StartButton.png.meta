@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3482fe2fe9681754b8525816685dc883
+guid: 7f399f931913f3d44b9a8abf501d208e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,70 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Clown_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 353
-        height: 441
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af04e1c9f4e966b47806e6cc8afd8a86
-      internalID: -909452562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Clown_1
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 0
-        width: 353
-        height: 441
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cf093ce90b660a43aeade30070f17e5
-      internalID: 832930630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Clown_2
-      rect:
-        serializedVersion: 2
-        x: 706
-        y: 0
-        width: 353
-        height: 441
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da15ad9907a1ce849806c995292e38fe
-      internalID: -1648635282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -208,10 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Clown_0: -909452562
-      Clown_1: 832930630
-      Clown_2: -1648635282
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
