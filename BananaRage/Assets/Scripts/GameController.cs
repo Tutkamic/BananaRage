@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button buttonNextLevel;
     [SerializeField] private GameObject particleSmile;
     [SerializeField] private GameObject particleSad;
+    [SerializeField] private AudioSource laughSound;
+    [SerializeField] private AudioSource booSound;
 
     public int BananaAmount;
     public int Level;
@@ -94,6 +96,7 @@ public class GameController : MonoBehaviour
 
     public void GrannySlip()
     {
+        booSound.Play();
         StartCoroutine(ShowParticle(particleSad));
 
         GrannyAmounts--;
@@ -106,6 +109,7 @@ public class GameController : MonoBehaviour
     }
     public void ClownSlip()
     {
+        laughSound.Play();
         StartCoroutine(ShowParticle(particleSmile));
 
         ClownAmounts--;
@@ -123,9 +127,15 @@ public class GameController : MonoBehaviour
 
     IEnumerator ShowParticle(GameObject particle)
     {
-        particle.SetActive(true);
-        yield return new WaitForSeconds(2);
-        particle.SetActive(false);
+        foreach (Transform child in particle.gameObject.transform)
+        {
+            child.GetComponent<ParticleSystem>().Play();
+        }
+        yield return new WaitForSeconds(3);
+        foreach (Transform child in particle.gameObject.transform)
+        {
+            child.GetComponent<ParticleSystem>().Stop();
+        }
     }
 
     public void BananaThrow()
