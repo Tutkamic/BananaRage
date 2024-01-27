@@ -9,5 +9,6 @@ public class GrannyCollisionController : MonoBehaviour, INpcBananaCOliision
     public void BananaSlip()
     {
         npcController.OnBananaSlip();
+        GameController.Instance.GrannySlip();
     }
 }

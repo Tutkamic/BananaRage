@@ -9,5 +9,7 @@ public class ClownCollisionController : MonoBehaviour, INpcBananaCOliision
     public void BananaSlip()
     {
         npcController.OnBananaSlip();
+        GameController.Instance.ClownSlip();
+
     }
 }
