@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button buttonTryAgain;
     [SerializeField] private Button buttonExit;
     [SerializeField] private Button buttonNextLevel;
+    [SerializeField] private GameObject particleSmile;
+    [SerializeField] private GameObject particleSad;
 
     public int BananaAmount;
     public int Level;
@@ -92,6 +94,8 @@ public class GameController : MonoBehaviour
 
     public void GrannySlip()
     {
+        StartCoroutine(ShowParticle(particleSad));
+
         GrannyAmounts--;
         if (GrannyAmounts == 0 && !nextLevel)
         {
@@ -102,6 +106,8 @@ public class GameController : MonoBehaviour
     }
     public void ClownSlip()
     {
+        StartCoroutine(ShowParticle(particleSmile));
+
         ClownAmounts--;
         if (ClownAmounts == 0 && !gameOver)
         {
@@ -113,6 +119,13 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         screen.SetActive(true);
+    }
+
+    IEnumerator ShowParticle(GameObject particle)
+    {
+        particle.SetActive(true);
+        yield return new WaitForSeconds(2);
+        particle.SetActive(false);
     }
 
     public void BananaThrow()
