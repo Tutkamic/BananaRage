@@ -6,12 +6,14 @@ public class Aim : MonoBehaviour
 {
     public bool CanSHoot;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.layer == 6) CanSHoot = true;
+        if (other.gameObject.layer == 6) CanSHoot = true;
     }
-    private void OnTriggerExit2D(Collider2D collision)
+
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.layer == 6) CanSHoot = false;
+        if (other.gameObject.layer == 6) CanSHoot = false;
     }
 }

@@ -29,6 +29,7 @@ public class AimController : MonoBehaviour
     }
     private void BananaShoot()
     {
+        if (!aim.CanSHoot) return;
         Instantiate(bananaPeelObject, aimTransform.position, Quaternion.identity);
     }
 }

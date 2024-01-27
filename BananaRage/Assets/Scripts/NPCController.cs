@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class NPCController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class NPCController : MonoBehaviour
     private float distanceTreshold = 0.2f;
     private float speed = 1.5f;
     private Vector3 randomDestination;
+    private bool isSlipped;
 
     private void Awake()
     {
@@ -44,7 +46,32 @@ public class NPCController : MonoBehaviour
     }
     private void Update()
     {
-
+        if (isSlipped) return;
         if (agent.remainingDistance <= distanceTreshold) SetRandomDestination();
+    }
+
+    public void OnBananaSlip()
+    {
+        isSlipped = true;
+        agent.isStopped = true;
+        SlipAnimation();
+    }
+
+    private void SlipAnimation()
+    {
+        Vector3 rotation = spriteRenderer.sprite == spriteRight ? new Vector3(0, 0, 90) : new Vector3(0, 0, -90);
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(gameObject.transform.DOLocalRotate(rotation, 1.5f)).OnComplete(OnSlipAnimationComplete).SetEase(Ease.OutExpo);
+    }
+
+    private void OnSlipAnimationComplete()
+    {
+        StartCoroutine(HideWithDelay());
+    }
+
+    IEnumerator HideWithDelay()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
     }
 }
