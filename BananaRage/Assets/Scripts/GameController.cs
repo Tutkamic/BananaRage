@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
         {
             Vector3 randomDestination = Random.insideUnitSphere * 5f;
             randomDestination = new Vector3(randomDestination.x, randomDestination.y, 0);
-            GameObject granny = Instantiate(Granny, randomDestination, Quaternion.identity);
+            Instantiate(Granny, randomDestination, Quaternion.identity);
         }
     }
 

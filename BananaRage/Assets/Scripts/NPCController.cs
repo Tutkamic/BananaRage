@@ -20,6 +20,7 @@ public class NPCController : MonoBehaviour
     {
         agent.speed = speed;
     }
+
     private void SetRandomDestination()
     {
         randomDestination = Random.insideUnitSphere * 5f;
@@ -48,6 +49,7 @@ public class NPCController : MonoBehaviour
     {
         if (isSlipped) return;
         if (agent.remainingDistance <= distanceTreshold) SetRandomDestination();
+        gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     public void OnBananaSlip()
