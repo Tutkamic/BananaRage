@@ -122,6 +122,7 @@ public class GameController : MonoBehaviour
     IEnumerator OpenScreenWIthDealy(GameObject screen)
     {
         yield return new WaitForSeconds(2);
+        Time.timeScale = 0;
         screen.SetActive(true);
     }
 

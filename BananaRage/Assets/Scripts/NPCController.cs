@@ -14,7 +14,7 @@ public class NPCController : MonoBehaviour
     private float distanceTreshold = 0.2f;
     private float speed = 1.5f;
     private Vector3 randomDestination;
-    private bool isSlipped;
+    public bool isSlipped;
 
     private void Awake()
     {

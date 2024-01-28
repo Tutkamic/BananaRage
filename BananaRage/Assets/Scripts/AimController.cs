@@ -29,7 +29,7 @@ public class AimController : MonoBehaviour
     }
     private void BananaShoot()
     {
-        if (!aim.CanSHoot) return;
+        if (!aim.CanSHoot || GameController.Instance.BananaAmount <= 0) return;
         GameController.Instance.BananaThrow();
         Instantiate(bananaPeelObject, aimTransform.position, Quaternion.identity);
     }
