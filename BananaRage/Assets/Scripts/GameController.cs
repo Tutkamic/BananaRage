@@ -167,6 +167,7 @@ public class GameController : MonoBehaviour
     private void BananaFrenzy()
     {
         BananaAmount += 4;
+        BananaAmountText.text = BananaAmount.ToString();
         clownsInRow = 0;
         bananaFrenzyHolder.SetActive(true);
         FrenzyAnimation();

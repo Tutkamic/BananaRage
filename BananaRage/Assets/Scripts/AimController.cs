@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,7 +44,14 @@ public class AimController : MonoBehaviour
     private void BananaShoot()
     {
         if (!aim.CanSHoot || GameController.Instance.BananaAmount <= 0) return;
+        AimShotAnimation();
         GameController.Instance.BananaThrow();
         Instantiate(bananaPeelObject, aimTransform.position, Quaternion.identity);
+    }
+
+    private void AimShotAnimation()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(aimTransform.transform.DOPunchScale(new Vector3(0.04f, 0.04f, 0.04f), 0.4f, 2));
     }
 }
