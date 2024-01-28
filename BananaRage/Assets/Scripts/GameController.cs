@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
@@ -93,9 +94,22 @@ public class GameController : MonoBehaviour
             Instantiate(Granny, randomDestination, Quaternion.identity);
         }
     }
+    private IEnumerator CheckBananasAmount()
+    {
+        yield return new WaitForEndOfFrame();
 
+        List<BananaPeel> bananas = FindObjectsOfType<BananaPeel>().ToList();
+
+        if (bananas.Count == 0 && BananaAmount == 0 && !gameOver && !nextLevel)
+            StartCoroutine(OpenScreenWIthDealy(GameOverScreen));
+        else if (bananas.Count == 0 && BananaAmount < ClownAmounts && !gameOver && !nextLevel)
+            StartCoroutine(OpenScreenWIthDealy(GameOverScreen));
+
+
+    }
     public void GrannySlip()
     {
+        StartCoroutine(CheckBananasAmount());
         booSound.Play();
         StartCoroutine(ShowParticle(particleSad));
 
@@ -107,8 +121,12 @@ public class GameController : MonoBehaviour
             StartCoroutine(OpenScreenWIthDealy(GameOverScreen));
         }
     }
+
+
     public void ClownSlip()
     {
+        StartCoroutine(CheckBananasAmount());
+
         laughSound.Play();
         StartCoroutine(ShowParticle(particleSmile));
 

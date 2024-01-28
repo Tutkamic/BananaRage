@@ -27,8 +27,8 @@ public class BananaPeel : MonoBehaviour
     {
         if (other.TryGetComponent(out INpcBananaCOliision npc))
         {
+            Destroy(gameObject);
             npc.BananaSlip();
-            gameObject.SetActive(false);
         }
     }
 }

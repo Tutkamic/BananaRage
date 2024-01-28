@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,22 @@ public class AimController : MonoBehaviour
     [SerializeField] private Aim aim;
 
     private float speed = 2f;
+    private float tresholdPosY = 4.55f;
+    private float tresholdPosX = 8.50f;
     private void Update()
     {
         AimMovement();
         BananaShootCheck();
+        BananaMovementControll();
+    }
+
+    private void BananaMovementControll()
+    {
+        if (aimTransform.position.x > tresholdPosX) aimTransform.position = new Vector3(tresholdPosX, aimTransform.position.y, aimTransform.position.z);
+        else if (aimTransform.position.x < -tresholdPosX) aimTransform.position = new Vector3(-tresholdPosX, aimTransform.position.y, aimTransform.position.z);
+
+        if (aimTransform.position.y > tresholdPosY) aimTransform.position = new Vector3(aimTransform.position.x, tresholdPosY, aimTransform.position.z);
+        else if (aimTransform.position.y < -tresholdPosY) aimTransform.position = new Vector3(aimTransform.position.x, -tresholdPosY, aimTransform.position.z);
     }
 
     private void AimMovement()
