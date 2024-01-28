@@ -24,4 +24,13 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            if (rulesScreen.activeSelf) rulesScreenButton.onClick.Invoke();
+            else buttonStart.onClick.Invoke();
+        }
+    }
 }
