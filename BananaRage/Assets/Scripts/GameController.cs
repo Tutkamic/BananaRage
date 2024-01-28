@@ -60,6 +60,10 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) ShowPauseScreen();
+
+        if (Input.GetKeyDown(KeyCode.Tab) && (pause || gameOver)) buttonExit.onClick.Invoke();
+        if (Input.GetKeyDown(KeyCode.Space) && (pause || gameOver)) buttonTryAgain.onClick.Invoke();
+        if (Input.GetKeyDown(KeyCode.Space) && nextLevel) buttonNextLevel.onClick.Invoke();
     }
 
     private void ShowPauseScreen()
@@ -101,9 +105,15 @@ public class GameController : MonoBehaviour
         List<BananaPeel> bananas = FindObjectsOfType<BananaPeel>().ToList();
 
         if (bananas.Count == 0 && BananaAmount == 0 && !gameOver && !nextLevel)
+        {
+            gameOver = true;
             StartCoroutine(OpenScreenWIthDealy(GameOverScreen));
+        }
         else if (bananas.Count == 0 && BananaAmount < ClownAmounts && !gameOver && !nextLevel)
+        {
+            gameOver = true;
             StartCoroutine(OpenScreenWIthDealy(GameOverScreen));
+        }
 
 
     }
