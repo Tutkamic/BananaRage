@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using DG.Tweening;
 
 public class GameController : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BananaAmountText;
     [SerializeField] private TextMeshProUGUI GameOverText;
     [SerializeField] private TextMeshProUGUI LevelText;
+    [SerializeField] private TextMeshProUGUI ClownAmountText;
     [SerializeField] private Button buttonTryAgain;
     [SerializeField] private Button buttonExit;
     [SerializeField] private Button buttonNextLevel;
     [SerializeField] private GameObject particleSmile;
     [SerializeField] private GameObject particleSad;
+    [SerializeField] private GameObject bananaFrenzyHolder;
     [SerializeField] private AudioSource laughSound;
     [SerializeField] private AudioSource booSound;
 
@@ -33,6 +36,8 @@ public class GameController : MonoBehaviour
     private bool gameOver;
     private bool nextLevel;
     private bool pause;
+    private int clownsInRow;
+    private int bananaFrenzyTreshlod = 4;
 
     private void Awake()
     {
@@ -48,11 +53,13 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        clownsInRow = 0;
         Level = PlayerPrefs.GetInt("Level", 0);
         ClownAmounts = Level + 4;
         GrannyAmounts = Level + 3;
         BananaAmount = Level + 7;
         BananaAmountText.text = BananaAmount.ToString();
+        ClownAmountText.text = ClownAmounts.ToString();
         LevelText.text = "LEVEL " + (Level + 1).ToString();
         InstantiateNPC();
     }
@@ -64,6 +71,9 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && (pause || gameOver)) buttonExit.onClick.Invoke();
         if (Input.GetKeyDown(KeyCode.Space) && (pause || gameOver)) buttonTryAgain.onClick.Invoke();
         if (Input.GetKeyDown(KeyCode.Space) && nextLevel) buttonNextLevel.onClick.Invoke();
+
+        if (Time.timeScale == 0) Cursor.visible = true;
+        else Cursor.visible = false;
     }
 
     private void ShowPauseScreen()
@@ -123,6 +133,8 @@ public class GameController : MonoBehaviour
         booSound.Play();
         StartCoroutine(ShowParticle(particleSad));
 
+        clownsInRow = 0;
+
         GrannyAmounts--;
         if (GrannyAmounts == 0 && !nextLevel)
         {
@@ -140,12 +152,30 @@ public class GameController : MonoBehaviour
         laughSound.Play();
         StartCoroutine(ShowParticle(particleSmile));
 
+        clownsInRow++;
+
         ClownAmounts--;
+        ClownAmountText.text = ClownAmounts.ToString();
         if (ClownAmounts == 0 && !gameOver)
         {
             nextLevel = true;
             StartCoroutine(OpenScreenWIthDealy(NextLevelScreen));
         }
+        else if (clownsInRow >= bananaFrenzyTreshlod) BananaFrenzy();
+    }
+
+    private void BananaFrenzy()
+    {
+        BananaAmount += 4;
+        clownsInRow = 0;
+        bananaFrenzyHolder.SetActive(true);
+        FrenzyAnimation();
+    }
+
+    private void FrenzyAnimation()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(bananaFrenzyHolder.transform.DOScale(Vector3.zero, 1).From()).SetEase(Ease.OutBack).AppendInterval(2).OnComplete(() => bananaFrenzyHolder.SetActive(false));
     }
     IEnumerator OpenScreenWIthDealy(GameObject screen)
     {
